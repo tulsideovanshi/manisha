@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday – A Special Wish For You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff0f8 0%, #ffeef0 25%, #fffbf0 50%, #f5f0ff 75%, #ffe8f0 100%);
+            background-attachment: fixed;
+            color: #4a4a4a;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: float-up 6s ease-in infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Trail */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2em;
+            animation: sparkle-fade 1s ease-out forwards;
+        }
+
+        @keyframes sparkle-fade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Home Page */
+        .home-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 60px 40px;
+            border-radius: 35px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 157, 181, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-card h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b, #c8a5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 157, 181, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 157, 181, 0.6)); }
+        }
+
+        .welcome-card p {
+            font-size: 1.2em;
+            color: #8a8a8a;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 157, 181, 0.3);
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 157, 181, 0.5);
+        }
+
+        /* About Page */
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+            font-weight: 800;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .personality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .personality-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 157, 181, 0.15);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
+
+        .personality-card:nth-child(1) { animation-delay: 0.1s; }
+        .personality-card:nth-child(2) { animation-delay: 0.2s; }
+        .personality-card:nth-child(3) { animation-delay: 0.3s; }
+        .personality-card:nth-child(4) { animation-delay: 0.4s; }
+        .personality-card:nth-child(5) { animation-delay: 0.5s; }
+        .personality-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .personality-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 157, 181, 0.2);
+            border-color: #ff9db5;
+        }
+
+        .personality-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .personality-card:nth-child(1) .personality-icon { animation-delay: 0s; }
+        .personality-card:nth-child(2) .personality-icon { animation-delay: 0.2s; }
+        .personality-card:nth-child(3) .personality-icon { animation-delay: 0.4s; }
+        .personality-card:nth-child(4) .personality-icon { animation-delay: 0.6s; }
+        .personality-card:nth-child(5) .personality-icon { animation-delay: 0.8s; }
+        .personality-card:nth-child(6) .personality-icon { animation-delay: 1s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .personality-card h3 {
+            font-size: 1.3em;
+            color: #ff9db5;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .personality-card p {
+            color: #8a8a8a;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        /* Memories Page with Image Upload */
+        .memories-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .upload-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(255, 157, 181, 0.2);
+        }
+
+        .upload-area {
+            border: 3px dashed #ff9db5;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 253, 240, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            background: rgba(255, 245, 230, 1);
+            border-color: #ffc89b;
+            transform: scale(1.02);
+        }
+
+        .upload-area.dragover {
+            background: rgba(255, 200, 155, 0.1);
+            border-color: #c8a5e8;
+            transform: scale(1.05);
+        }
+
+        .upload-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            color: #ff9db5;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .upload-area small {
+            color: #999;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            border: 2px solid rgba(255, 157, 181, 0.15);
+            animation: slideInUp 0.6s ease-out backwards;
+            position: relative;
+        }
+
+        .memory-card:nth-child(1) { animation-delay: 0.1s; }
+        .memory-card:nth-child(2) { animation-delay: 0.2s; }
+        .memory-card:nth-child(3) { animation-delay: 0.3s; }
+        .memory-card:nth-child(4) { animation-delay: 0.4s; }
+        .memory-card:nth-child(5) { animation-delay: 0.5s; }
+        .memory-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .memory-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(255, 157, 181, 0.2);
+            border-color: #ff9db5;
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ffc89b, #c8a5e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .memory-card:hover .memory-image {
+            animation: pulse 0.6s ease-out;
+        }
+
+        @keyframes pulse {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+            100% { filter: brightness(1); }
+        }
+
+        .memory-content {
+            padding: 25px;
+        }
+
+        .memory-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #ff9db5;
+            margin-bottom: 10px;
+        }
+
+        .memory-description {
+            color: #8a8a8a;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .remove-memory-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 99, 99, 0.8);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-card:hover .remove-memory-btn {
+            opacity: 1;
+        }
+
+        .remove-memory-btn:hover {
+            background: rgba(255, 50, 50, 1);
+            transform: scale(1.1);
+        }
+
+        /* Message Page */
+        .message-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .love-letter {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            line-height: 2;
+            animation: fadeIn 1s ease-out;
+            margin-bottom: 60px;
+            border: 2px solid rgba(255, 157, 181, 0.2);
+            position: relative;
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 20%;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff9db5, transparent);
+            border-radius: 2px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .love-letter h2 {
+            font-size: 2.2em;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .love-letter p {
+            font-size: 1.1em;
+            color: #8a8a8a;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .letter-signature {
+            text-align: right;
+            margin-top: 40px;
+            font-weight: 700;
+            color: #ff9db5;
+            font-size: 1.2em;
+        }
+
+        /* Surprise Page */
+        .surprise-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .countdown-timer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .countdown-unit {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 157, 181, 0.15);
+        }
+
+        .countdown-unit:nth-child(1) { animation-delay: 0s; }
+        .countdown-unit:nth-child(2) { animation-delay: 0.1s; }
+        .countdown-unit:nth-child(3) { animation-delay: 0.2s; }
+        .countdown-unit:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .countdown-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-label {
+            font-size: 0.9em;
+            color: #8a8a8a;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .surprise-message {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 50px 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-out 0.3s both;
+            border: 2px solid rgba(255, 157, 181, 0.2);
+        }
+
+        .surprise-message h3 {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #c8a5e8, #ff9db5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .surprise-message p {
+            color: #8a8a8a;
+            line-height: 1.9;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        /* Friendship Forever Page */
+        .forever-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .forever-content {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .forever-message {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(255, 157, 181, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .forever-message p {
+            color: #8a8a8a;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+
+        .forever-promise {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b, #c8a5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            margin: 25px 0;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .friendship-bonds {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .bond-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 30px 20px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border: 2px solid rgba(255, 157, 181, 0.15);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
+
+        .bond-card:nth-child(1) { animation-delay: 0.1s; }
+        .bond-card:nth-child(2) { animation-delay: 0.2s; }
+        .bond-card:nth-child(3) { animation-delay: 0.3s; }
+        .bond-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .bond-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 157, 181, 0.2);
+            border-color: #ff9db5;
+        }
+
+        .bond-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .bond-card:nth-child(1) .bond-icon { animation-delay: 0s; }
+        .bond-card:nth-child(2) .bond-icon { animation-delay: 0.2s; }
+        .bond-card:nth-child(3) .bond-icon { animation-delay: 0.4s; }
+        .bond-card:nth-child(4) .bond-icon { animation-delay: 0.6s; }
+
+        .bond-card h4 {
+            font-size: 1.1em;
+            color: #ff9db5;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        .bond-card p {
+            color: #8a8a8a;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .final-message {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 45px 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(255, 157, 181, 0.2);
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .final-message p {
+            color: #8a8a8a;
+            font-size: 1.1em;
+            line-height: 1.9;
+            margin: 15px 0;
+        }
+
+        .promise-text {
+            font-weight: 600;
+            color: #ff9db5;
+            font-size: 1.2em;
+        }
+
+        .signature-text {
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3em;
+            margin-top: 25px;
+        }
+
+        .celebrate-final {
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .next-btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, #ff9db5, #ffc89b);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 157, 181, 0.3);
+        }
+
+        .next-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 157, 181, 0.5);
+        }
+
+        .empty-upload-message {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-card h1 {
+                font-size: 2.5em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .welcome-card {
+                padding: 40px 25px;
+            }
+            .love-letter {
+                padding: 30px 20px;
+            }
+            .countdown-timer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .page {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+
+    <!-- Home Page -->
+    <section class="page active" id="home">
+        <div class="home-container">
+            <div class="welcome-card">
+                <h1>✨ Happy Birthday! ✨</h1>
+                <p>To someone truly special,</p>
+                <p>Today we celebrate YOU—your kindness, your laughter, and all the beautiful memories we share. This website is a small token of my love and appreciation for being such an amazing friend.</p>
+                <button class="btn" onclick="nextPage()">Begin the Journey 💕</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section class="page" id="about">
+        <div class="about-container">
+            <h2 class="section-title">💝 You Are Extraordinary</h2>
+            
+            <div class="personality-grid">
+                <div class="personality-card">
+                    <div class="personality-icon">💪</div>
+                    <h3>Strength</h3>
+                    <p>You face challenges with courage and inspire others with your resilience.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">🎨</div>
+                    <h3>Creativity</h3>
+                    <p>Your unique perspective brings beauty and innovation to everything.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">❤️</div>
+                    <h3>Kindness</h3>
+                    <p>Your genuine compassion touches everyone around you beautifully.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">😄</div>
+                    <h3>Humor</h3>
+                    <p>Your infectious laugh brightens even the darkest days.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">🌟</div>
+                    <h3>Authenticity</h3>
+                    <p>You're unapologetically yourself, making you so magnetic and loved.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">👂</div>
+                    <h3>Listening</h3>
+                    <p>You genuinely care and always know exactly what to say.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">🧠</div>
+                    <h3>open-minded</h3>
+                    <p>You never judge, you just listen and try to understand me, and that makes it so easy to share even my craziest thoughts with you.</p>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon">🔒</div>
+                    <h3>trust-worthy</h3>
+                    <p>You're the one person I can share anything with, knowing my secrets, feelings, and dreams are always safe with you..</p>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextPage()">See Our Memories 📸</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Page -->
+    <section class="page" id="memories">
+        <div class="memories-container">
+            <h2 class="section-title">📸 Our Beautiful Memories</h2>
+            
+            <div class="memories-grid" id="memoriesGrid">
+                <div class="memory-card">
+                    <img src="1.jpeg" alt="First Moment" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">First Moment</div>
+                        <div class="memory-description">The day we met and knew our friendship would be special.</div>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="2.jpeg" alt="Endless Laughter" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">Endless Laughter</div>
+                        <div class="memory-description">Inside jokes and moments of pure joy together.</div>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="3.jpeg" alt="Adventures" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">Adventures</div>
+                        <div class="memory-description">Exploring new places and creating unforgettable stories.</div>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="4.jpeg" alt="Coffee Talks" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">Coffee Talks</div>
+                        <div class="memory-description">Long conversations sharing dreams and everything.</div>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="5.jpeg" alt="Through Thick & Thin" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">Through Thick & Thin</div>
+                        <div class="memory-description">You were there when I needed you most.</div>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="6.jpeg" alt="Special Moments" class="memory-image">
+                    <div class="memory-content">
+                        <div class="memory-title">Special Moments</div>
+                        <div class="memory-description">Every second with you that truly matters.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextPage()">Read My Heart 💌</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Page -->
+    <section class="page" id="message">
+        <div class="message-container">
+            <div class="love-letter">
+                <h2>💌 A Message For You</h2>
+                <p>Dear Beautiful Soul,</p>
+                <p>As I sit down to write this, I'm overwhelmed with gratitude for having you in my life. You're not just my best friend—you're my confidant, my cheerleader, my anchor, and my inspiration.</p>
+                <p>I want you to know how much you truly mean to me. Your kindness has lifted me up when I was down. Your laughter has healed my heartaches. Your loyalty has shown me what real friendship looks like. And your presence makes everything better.</p>
+                <p>On this special day, I celebrate not just your birthday, but YOU. Your beautiful heart, your incredible strength, your unique gifts. You deserve all the happiness and love this world has to offer.</p>
+                <p>Thank you for being exactly who you are. Thank you for choosing to be my friend. Thank you for every laugh, every tear shared, every moment etched in my heart.</p>
+                <p>Here's to celebrating YOU and cherishing our friendship for many more years. You are loved more than words can express.</p>
+                <div class="letter-signature">With all my love,<br>Your Best Friend 💝</div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextPage()">Open Your Surprise 🎁</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Surprise Page -->
+    <section class="page" id="surprise">
+        <div class="surprise-container">
+            <h2 class="section-title">🎁 Birthday Countdown</h2>
+            
+            <div class="countdown-timer">
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="days">0</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="hours">0</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="minutes">0</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="seconds">0</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="surprise-message">
+                <h3>A Special Celebration 🎉</h3>
+                <p>You've journeyed through our story, and I hope it made you smile from ear to ear!</p>
+                <p>Today is YOUR day. A day to celebrate the amazing person you are and all that you bring to this world. You deserve every happiness, every success, and every beautiful moment.</p>
+                <p>Thank you for being my friend, my support, my joy, and my inspiration. I'm so grateful for you!</p>
+                <button class="btn" onclick="celebrate()">🎉 Celebrate With Confetti!</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextPage()">Forever & Always 💕</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friendship Forever Page -->
+    <section class="page" id="forever">
+        <div class="forever-container">
+            <div class="forever-content">
+                <h2 class="section-title">👯 Friendship Forever</h2>
+                
+                <div class="forever-message">
+                    <p>No matter what the future holds, one thing I know for certain:</p>
+                    <h3 class="forever-promise">Our friendship is forever 💕</h3>
+                    <p>Through every season, every chapter, every twist and turn life takes us on—you'll always be by my side, and I'll always be here for you.</p>
+                </div>
+
+                <div class="friendship-bonds">
+                    <div class="bond-card">
+                        <div class="bond-icon">🤝</div>
+                        <h4>We Support Each Other</h4>
+                        <p>In victories and setbacks, we stand together through it all.</p>
+                    </div>
+                    <div class="bond-card">
+                        <div class="bond-icon">💭</div>
+                        <h4>We Understand Without Words</h4>
+                        <p>A look, a silence, a moment—we just get each other.</p>
+                    </div>
+                    <div class="bond-card">
+                        <div class="bond-icon">🌈</div>
+                        <h4>We Color Each Other's World</h4>
+                        <p>You bring joy, light, and color to my life every single day.</p>
+                    </div>
+                    <div class="bond-card">
+                        <div class="bond-icon">♾️</div>
+                        <h4>We Are Timeless</h4>
+                        <p>Distance, time, or circumstance could never break what we have.</p>
+                    </div>
+                </div>
+
+                <div class="final-message">
+                    <p>So on your birthday, I don't just wish you happiness this year—I wish for a lifetime of beautiful moments, countless memories yet to be made, and the knowledge that you have a friend in me, always.</p>
+                    <p class="promise-text">Here's to us, to forever, and to a friendship that will endure all of time's tests.</p>
+                    <p class="signature-text">Best friends, now and always 💕✨</p>
+                </div>
+
+                <button class="btn celebrate-final" onclick="celebrateFinal()">Forever 💕 Celebrate!</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentPage = 0;
+        const pages = ['home', 'about', 'memories', 'message', 'surprise', 'forever'];
+        let uploadedImages = [];
+
+        // Initialize floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // Mouse sparkle trail
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.8) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = '✨';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        // Image upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const memoriesGrid = document.getElementById('memoriesGrid');
+
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const imageData = {
+                            id: Date.now() + Math.random(),
+                            src: e.target.result
+                        };
+                        uploadedImages.push(imageData);
+                        renderMemories();
+                        imageInput.value = '';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function renderMemories() {
+            if (uploadedImages.length === 0) {
+                memoriesGrid.innerHTML = '<div class="empty-upload-message">💭 No photos yet. Upload your memories to get started! 📸</div>';
+                return;
+            }
+
+            const uploadedHTML = uploadedImages.map(img => `
+                <div class="memory-card">
+                    <img src="${img.src}" alt="Memory">
+                    <button class="remove-memory-btn" onclick="removeImage('${img.id}')">×</button>
+                </div>
+            `).join('');
+
+            memoriesGrid.innerHTML = uploadedHTML;
+        }
+
+        function removeImage(id) {
+            uploadedImages = uploadedImages.filter(img => img.id !== id);
+            renderMemories();
+        }
+
+        function showPage(pageIndex) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pages[pageIndex]).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function celebrate() {
+            createConfetti();
+        }
+
+        function celebrateFinal() {
+            createConfetti();
+            setTimeout(() => {
+                createHeartExplosion();
+            }, 500);
+        }
+
+        function createHeartExplosion() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '✨'];
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = Math.random() * window.innerHeight + 'px';
+                heart.style.fontSize = (Math.random() * 2 + 1.5) + 'em';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '999';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                document.body.appendChild(heart);
+
+                const duration = Math.random() * 3 + 2;
+                heart.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                    { transform: 'translate(0, -300px) scale(0)', opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'ease-out'
+                });
+
+                setTimeout(() => heart.remove(), duration * 1000);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#ff9db5', '#ffc89b', '#c8a5e8', '#ffeb99'];
+            for (let i = 0; i < 70; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '999';
+                document.body.appendChild(confetti);
+
+                const duration = Math.random() * 3 + 2.5;
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 150 + 100;
+
+                confetti.animate([
+                    { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${Math.cos(angle) * velocity}px, ${window.innerHeight + 100}px) rotate(720deg)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+
+        function updateCountdown() {
+            const targetDate = new Date('2025-12-25').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').textContent = Math.floor((distance % (1000 * 60)) / 1000);
+            }
+        }
+
+        createFloatingHearts();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        showPage(0);
+    </script>
+</body>
+</html>
